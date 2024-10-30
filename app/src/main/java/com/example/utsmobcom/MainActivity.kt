@@ -7,14 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.utsmobcom.ui.theme.UtsmobcomTheme
-import com.example.utsmobcom.R
+import com.example.utsmobcom.widget.ShowBox
 import com.example.utsmobcom.type.Book
-import java.util.function.Consumer
 
 
     val Data = mutableListOf<Book>(
@@ -25,6 +21,22 @@ import java.util.function.Consumer
             pengarang = "Ngarang",
             tahun = 2022,
             rangkuman = "Sehat"
+        ),
+        Book(
+            judul = "Potter",
+            genre = "Happy",
+            penerbit = "Pik",
+            pengarang = "GKngarang",
+            tahun = 2021,
+            rangkuman = "GK sehat"
+        ),
+        Book(
+            judul = "Potter",
+            genre = "Happy",
+            penerbit = "Pik",
+            pengarang = "GKngarang",
+            tahun = 2021,
+            rangkuman = "GK sehat"
         ),
         Book(
             judul = "Potter",
@@ -48,28 +60,12 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Column {
                         Data.forEach { it ->
-                            Greeting(name = it.judul)
+                            ShowBox(it)
                         }
                     }
 
                 }
             }
-        }
-    }
-
-    @Composable
-    fun Greeting(name: String, modifier: Modifier = Modifier) {
-        Text(
-            text = "Hello $name!",
-            modifier = modifier
-        )
-    }
-
-    @Preview(showBackground = true)
-    @Composable
-    fun GreetingPreview() {
-        UtsmobcomTheme {
-            Greeting("Android")
         }
     }
 }
