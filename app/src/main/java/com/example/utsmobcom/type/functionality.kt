@@ -4,7 +4,8 @@ import androidx.navigation.findNavController
 import com.example.utsmobcom.type.Book
 
 
-// navigate to add page 
+// navigate to add page
+/* 
 fun goToSkipThisPage(){
 findNavController().navigate(
     R.id.page2Add, 
@@ -12,7 +13,7 @@ findNavController().navigate(
     NavOptions.Builder().setPopUpTo(R.id.page1Main, false).build()
 )
 }
-
+*/
 
 fun storeInput(){
 }

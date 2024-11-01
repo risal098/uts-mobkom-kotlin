@@ -1,4 +1,4 @@
-    package com.example.utsmobcom
+package com.example.utsmobcom
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,11 +11,11 @@ import androidx.compose.ui.Modifier
 import com.example.utsmobcom.ui.theme.UtsmobcomTheme
 import com.example.utsmobcom.widget.ShowBox
 import com.example.utsmobcom.type.Book
-
-
-    val Data = mutableListOf<Book>(
+import com.example.utsmobcom.widget.showMainPage
+import com.example.utsmobcom.nav.navCenter
+val Data = mutableListOf<Book>(
         Book(
-            judul = "Harry",
+            judul = "aaaHarry",
             genre = "horror",
             penerbit = "Gramed",
             pengarang = "Ngarang",
@@ -54,17 +54,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             UtsmobcomTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Column {
-                        Data.forEach { it ->
-                            ShowBox(it)
-                        }
-                    }
-
-                }
+               navCenter()
             }
         }
     }
