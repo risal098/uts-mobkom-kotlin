@@ -67,14 +67,7 @@ fun showMainPage(navController: NavController,context:Context) {
 var datal by remember { mutableStateOf(emptyList<Book>()) }
 LaunchedEffect(Unit) {
 				Data=parseJsonToMutableList(loadData(context, "bookList"))
-				Data.add(Book(
-            judul = "Potter",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = "2021",
-            rangkuman = "GK sehat"
-        ))
+				datal=Data
          // Fetch and set data from storeInput
       //  data = data.toMutableList()
       //  Data.add(testing2)
@@ -89,7 +82,7 @@ LaunchedEffect(Unit) {
             Column(
                 modifier = Modifier.fillMaxSize()
             ) {
-                Data.forEach { item ->
+                datal.forEach { item ->
                     ShowBox(navController, item)
                 }
             }

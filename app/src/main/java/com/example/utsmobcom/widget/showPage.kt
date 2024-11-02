@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.utsmobcom.type.Book
+import com.example.utsmobcom.Data
 @Composable
 fun ShowBook(navController: NavController, book: Int) {
 
