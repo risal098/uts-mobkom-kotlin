@@ -23,24 +23,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.utsmobcom.type.Book
 import com.example.utsmobcom.Data
+import com.example.utsmobcom.type.Book
 @Composable
 fun ShowBook(navController: NavController, book: Int) {
-
 
     Box {
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-            //            .background(color = Color.LightGray)
         )
         {
             ShowBoxFull(navController = navController, book = Data[book])
         }
         ExtendedFloatingActionButton (
-//            text = { Text(text = "sad") },
-//            icon = { Icon(Icons.Filled.ArrowBack, contentDescription = "Back") },
+
             interactionSource = remember {
                 MutableInteractionSource()
             },
@@ -51,7 +48,6 @@ fun ShowBook(navController: NavController, book: Int) {
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(16.dp),
-            //                .wrapContentHeight(Alignment.Bottom)
         ) {
             Row (
             ) {
@@ -67,13 +63,7 @@ fun ShowBook(navController: NavController, book: Int) {
 }
 
 @Composable
-fun FloatingButton(onClick: () -> Unit) {
-
-}
-
-@Composable
 fun ShowBoxFull(navController: NavController, book: Book) {
-    val id = Data.indexOf(book)
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -158,7 +148,7 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                 ){
                     Text(text = "Tahun: ")
                     Text(
-                        text = book.tahun.toString(),
+                        text = book.tahun,
                         modifier = Modifier
                             .background(
                                 color = Color(213, 213, 207),

@@ -1,5 +1,6 @@
 package com.example.utsmobcom.widget
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,49 +32,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.utsmobcom.type.Book
-import android.content.Context
-import com.example.utsmobcom.type.*
 import com.example.utsmobcom.Data
-var testing=Book(
-            judul = "testing",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = "2021",
-            rangkuman = "GK sehat"
-        )
-var testing2=Book(
-            judul = "tiosting",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = "2021",
-            rangkuman = "GK sehat"
-        )
-var testing3=Book(
-            judul = "hosting",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = "2021",
-            rangkuman = "GK sehat"
-        )
+import com.example.utsmobcom.type.Book
+import com.example.utsmobcom.type.loadData
+import com.example.utsmobcom.type.parseJsonToMutableList
 
-fun storeInput(testing:Book,Datas:MutableList<Book>):MutableList<Book>{
-
-    Datas.add(testing)
-    return (Datas)
-}
 @Composable
-fun showMainPage(navController: NavController,context:Context) {
-var datal by remember { mutableStateOf(emptyList<Book>()) }
-LaunchedEffect(Unit) {
-				Data=parseJsonToMutableList(loadData(context, "bookList"))
-				datal=Data
-         // Fetch and set data from storeInput
-      //  data = data.toMutableList()
-      //  Data.add(testing2)
+fun showMainPage(navController: NavController, context: Context) {
+    var dataBook by remember { mutableStateOf(emptyList<Book>()) }
+    LaunchedEffect(Unit) {
+        Data = parseJsonToMutableList(loadData(context, "bookList"))
+        dataBook = Data
     }
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -82,29 +54,39 @@ LaunchedEffect(Unit) {
             Column(
                 modifier = Modifier.fillMaxSize()
             ) {
-                datal.forEach { item ->
-                    ShowBox(navController, item)
+                if (dataBook.isEmpty()) {
+                    Text(text = "No Data Available")
+
+                } else {
+                    dataBook.forEach { item ->
+                        ShowBox(navController, item)
+                    }
                 }
             }
-            
-            // Button fixed to the bottom right corner
+
             Button(
                 onClick = { navController.navigate("add_book") },
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(8.dp) // Padding around the button
+                    .padding(8.dp)
             ) {
-                Text("Fixed Button")
+                Icon(Icons.Filled.Add, "Add Button")
+                Text("Add Book")
             }
         }
     }
 }
 
 
-
 @Composable
 fun ShowBox(navController: NavController, book: Book) {
-    val id = Data.indexOf(book)
+
+    val id = if (Data.size != 0) Data.indexOf(book) else 0
+    if (Data.size == 0) {
+        Text(text = "No Data Available")
+        return
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -120,7 +102,7 @@ fun ShowBox(navController: NavController, book: Book) {
             }
 
     ) {
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
@@ -135,7 +117,7 @@ fun ShowBox(navController: NavController, book: Book) {
                     .background(
                         color = Color.LightGray,
                         shape = RoundedCornerShape(16.dp)
-                        )
+                    )
                     .wrapContentHeight()
                     .wrapContentWidth()
                     .padding(
@@ -144,13 +126,20 @@ fun ShowBox(navController: NavController, book: Book) {
                     .clip(RoundedCornerShape(20.dp))
             ) {
                 Button(
-                onClick = { navController.navigate("edit_book/{id}".replace("{id}", id.toString())) },
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(8.dp) // Padding around the button
-            ) {
-                Text("Edit")
-            }
+                    onClick = {
+                        navController.navigate(
+                            "edit_book/{id}".replace(
+                                "{id}",
+                                id.toString()
+                            )
+                        )
+                    },
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(8.dp)
+                ) {
+                    Text("Edit")
+                }
             }
 
         }
