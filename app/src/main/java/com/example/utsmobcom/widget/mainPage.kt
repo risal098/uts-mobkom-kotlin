@@ -97,7 +97,8 @@ fun storeInput(testing:Book,Datas:MutableList<Book>):MutableList<Book>{
 fun showMainPage(navController: NavController) {
 var data by remember { mutableStateOf(emptyList<Book>()) }
 LaunchedEffect(Unit) {
-        data = storeInput(testing,Data) // Fetch and set data from storeInput
+//        data = storeInput(testing,Data) // Fetch and set data from storeInput
+        data = Data // Fetch and set data from storeInput
       //  data = data.toMutableList()
       //  Data.add(testing2)
     }

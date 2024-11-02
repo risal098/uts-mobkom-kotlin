@@ -23,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.utsmobcom.Data
 import com.example.utsmobcom.type.Book
 @Composable
 fun ShowBook(navController: NavController, book: Int) {
@@ -36,7 +35,7 @@ fun ShowBook(navController: NavController, book: Int) {
             //            .background(color = Color.LightGray)
         )
         {
-            ShowBoxFull(navController = navController, book = Data[book-1])
+            ShowBoxFull(navController = navController, book = Data[book])
         }
         ExtendedFloatingActionButton (
 //            text = { Text(text = "sad") },
