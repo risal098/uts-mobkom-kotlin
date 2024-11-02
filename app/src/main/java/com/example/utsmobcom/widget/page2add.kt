@@ -11,9 +11,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
-
+import com.example.utsmobcom.type.Book
+import android.content.Context
+import com.example.utsmobcom.Data
 @Composable
-fun BookInputPage(navController: NavController) {
+fun BookInputPage(navController: NavController,onSave: (Book,MutableList<Book>) -> Unit) {
     // State variables to hold text input for each field
     var judul by remember { mutableStateOf(TextFieldValue("")) }
     var pengarang by remember { mutableStateOf(TextFieldValue("")) }
@@ -56,6 +58,15 @@ fun BookInputPage(navController: NavController) {
                     // Pop up to "home" and remove all pages up to and including "home"
                     popUpTo("home") { inclusive = true }
                 })
+                var newBook=Book(
+                judul = judul.text,
+                pengarang = pengarang.text,
+                penerbit = penerbit.text,
+                tahun = tahun.text,
+                genre = genre.text,
+                rangkuman = rangkuman.text
+            )
+            onSave(newBook,Data)
             }) {
                 Text("Right Button")
             }

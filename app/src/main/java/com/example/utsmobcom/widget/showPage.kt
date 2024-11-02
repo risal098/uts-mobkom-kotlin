@@ -36,7 +36,7 @@ fun ShowBook(navController: NavController, book: Int) {
             //            .background(color = Color.LightGray)
         )
         {
-            ShowBoxFull(navController = navController, book = Data[book-1])
+            ShowBoxFull(navController = navController, book = Data[book])
         }
         ExtendedFloatingActionButton (
 //            text = { Text(text = "sad") },

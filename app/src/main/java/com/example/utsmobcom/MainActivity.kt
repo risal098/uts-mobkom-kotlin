@@ -13,40 +13,9 @@ import com.example.utsmobcom.widget.ShowBox
 import com.example.utsmobcom.type.Book
 import com.example.utsmobcom.widget.showMainPage
 import com.example.utsmobcom.nav.navCenter
-val Data = mutableListOf<Book>(
-        Book(
-            judul = "aaaHarry",
-            genre = "horror",
-            penerbit = "Gramed",
-            pengarang = "Ngarang",
-            tahun = 2022,
-            rangkuman = "Sehat"
-        ),
-        Book(
-            judul = "Potter",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = 2021,
-            rangkuman = "GK sehat"
-        ),
-        Book(
-            judul = "Potter",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = 2021,
-            rangkuman = "GK sehat"
-        ),
-        Book(
-            judul = "Potter",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = 2021,
-            rangkuman = "GK sehat"
-        ),
-    )
+import android.content.Context
+
+var Data=mutableListOf<Book>() 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +23,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             UtsmobcomTheme {
                 // A surface container using the 'background' color from the theme
-               navCenter()
+                
+               navCenter(context=this)
             }
         }
     }

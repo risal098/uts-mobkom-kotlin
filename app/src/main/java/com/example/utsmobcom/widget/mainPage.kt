@@ -29,13 +29,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.utsmobcom.type.Book
-
+import android.content.Context
+import com.example.utsmobcom.type.*
+import com.example.utsmobcom.Data
 var testing=Book(
             judul = "testing",
             genre = "Happy",
             penerbit = "Pik",
             pengarang = "GKngarang",
-            tahun = 2021,
+            tahun = "2021",
             rangkuman = "GK sehat"
         )
 var testing2=Book(
@@ -43,7 +45,7 @@ var testing2=Book(
             genre = "Happy",
             penerbit = "Pik",
             pengarang = "GKngarang",
-            tahun = 2021,
+            tahun = "2021",
             rangkuman = "GK sehat"
         )
 var testing3=Book(
@@ -51,53 +53,29 @@ var testing3=Book(
             genre = "Happy",
             penerbit = "Pik",
             pengarang = "GKngarang",
-            tahun = 2021,
+            tahun = "2021",
             rangkuman = "GK sehat"
         )
-var Data = mutableListOf<Book>(
-        Book(
-            judul = "aaaHarry",
-            genre = "horror",
-            penerbit = "Gramed",
-            pengarang = "Ngarang",
-            tahun = 2022,
-            rangkuman = "Sehat"
-        ),
-        Book(
-            judul = "Potter",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = 2021,
-            rangkuman = "GK sehat"
-        ),
-        Book(
-            judul = "Potter",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = 2021,
-            rangkuman = "GK sehat"
-        ),
-        Book(
-            judul = "Potter",
-            genre = "Happy",
-            penerbit = "Pik",
-            pengarang = "GKngarang",
-            tahun = 2021,
-            rangkuman = "GK sehat"
-        ),
-    )
+
 fun storeInput(testing:Book,Datas:MutableList<Book>):MutableList<Book>{
 
     Datas.add(testing)
     return (Datas)
 }
 @Composable
-fun showMainPage(navController: NavController) {
-var data by remember { mutableStateOf(emptyList<Book>()) }
+fun showMainPage(navController: NavController,context:Context) {
+var datal by remember { mutableStateOf(emptyList<Book>()) }
 LaunchedEffect(Unit) {
-        data = storeInput(testing,Data) // Fetch and set data from storeInput
+				Data=parseJsonToMutableList(loadData(context, "bookList"))
+				Data.add(Book(
+            judul = "Potter",
+            genre = "Happy",
+            penerbit = "Pik",
+            pengarang = "GKngarang",
+            tahun = "2021",
+            rangkuman = "GK sehat"
+        ))
+         // Fetch and set data from storeInput
       //  data = data.toMutableList()
       //  Data.add(testing2)
     }
@@ -111,7 +89,7 @@ LaunchedEffect(Unit) {
             Column(
                 modifier = Modifier.fillMaxSize()
             ) {
-                data.forEach { item ->
+                Data.forEach { item ->
                     ShowBox(navController, item)
                 }
             }
