@@ -34,6 +34,15 @@ fun loadData(context: Context, key: String): String? {
     val sharedPreferences: SharedPreferences = context.getSharedPreferences("MyDatas", Context.MODE_PRIVATE)
     return sharedPreferences.getString(key, null) // Returns null if key doesn’t exist
 }
+fun editBook(context: Context,book:Book, bookList: MutableList<Book>,idBook:Int) {
+    val sharedPreferences = context.getSharedPreferences("MyDatas", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    val gson = Gson()
+    bookList[idBook]=book
+    val json = gson.toJson(bookList)
+    editor.putString("bookList", json)
+    editor.apply()
+}
 fun editData(){
 }
 fun loadAllDatas(){

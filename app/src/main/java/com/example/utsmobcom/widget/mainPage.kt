@@ -143,7 +143,14 @@ fun ShowBox(navController: NavController, book: Book) {
                     )
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Text(text = "Edit")
+                Button(
+                onClick = { navController.navigate("edit_book/{id}".replace("{id}", id.toString())) },
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(8.dp) // Padding around the button
+            ) {
+                Text("Edit")
+            }
             }
 
         }
