@@ -34,7 +34,7 @@ fun navCenter(context: Context) {
                     BookEditPage(
                         navController,
                         { book, bookList, id -> editBook(context, book, bookList, id) },
-                        { book, bookList -> deleteBook(context, book, bookList) },
+                        {  bookList,id -> deleteBook(context,  bookList,id) },
                         it,
                         Data[it]
                     )
