@@ -101,21 +101,6 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                 Column(
                     modifier = Modifier.padding(bottom = 12.dp)
                 ) {
-                    Text(text = "Judul: ")
-                    Text(
-                        text = book.judul,
-                        modifier = Modifier
-                            .background(
-                                color = Color(213, 213, 207),
-                                shape = RoundedCornerShape(10.dp)
-                            )
-                            .padding(8.dp, 12.dp, 8.dp, 12.dp)
-                            .fillMaxWidth()
-                    )
-                }
-                Column(
-                    modifier = Modifier.padding(bottom = 12.dp)
-                ) {
                     Text(text = "Penerbit: ")
                     Text(
                         text = book.penerbit,
