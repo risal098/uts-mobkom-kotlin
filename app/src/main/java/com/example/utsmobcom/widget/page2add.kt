@@ -178,7 +178,7 @@ fun DropdownGenre(
 fun BookEditPage(
     navController: NavController,
     onSave: (Book, MutableList<Book>, Int) -> Unit,
-    deleteBook: ( MutableList<Book>,Int) -> Unit,
+    deleteBook: (Book, MutableList<Book>) -> Unit,
     idBook: Int,
     book: Book
 ) {
@@ -223,18 +223,18 @@ fun BookEditPage(
             }
             Button(
                 onClick = {
-                    
+
                     navController.navigate("home", navOptions {
                         popUpTo("home") {
                             inclusive = true
                         }
                     })
-                    deleteBook( Data, idBook)
+                    deleteBook(book, Data)
                 }
             ) {
                 Text(
                     "Delete",
-                    )
+                )
             }
             Button(
                 onClick = {

@@ -23,17 +23,23 @@ fun storeNewBook(context: Context, book: Book, bookList: MutableList<Book>) {
     editor.putString("bookList", json)
     editor.apply()
 }
-/*
+
+
 fun deleteBook(context: Context, book: Book, bookList: MutableList<Book>) {
+    var newBookList = mutableListOf<Book>()
+    if (bookList.size > 1) {
+        bookList.remove(book)
+        newBookList = bookList.toMutableList()
+    }
+    val gson = Gson()
+    val json = gson.toJson(newBookList)
     val sharedPreferences = context.getSharedPreferences("MyDatas", Context.MODE_PRIVATE)
     val editor = sharedPreferences.edit()
-    val gson = Gson()
-    bookList.remove(book)
-    val json = gson.toJson(bookList)
     editor.putString("bookList", json)
     editor.apply()
 }
-*/
+
+
 fun loadData(context: Context, key: String): String? {
     val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("MyDatas", Context.MODE_PRIVATE)
@@ -49,23 +55,24 @@ fun editBook(context: Context, book: Book, bookList: MutableList<Book>, idBook: 
     editor.putString("bookList", json)
     editor.apply()
 }
-fun deleteBook(context: Context,  bookList: MutableList<Book>, idBook: Int) {
-		var newBookList=mutableListOf<Book>() 
-		var index=0
-		for(x in bookList){
-		if(index!=idBook){
-		newBookList.add(x)
-		}
-		index+=1
-		}
-	//	bookList.removeAt(idBook)
-		val gson = Gson()
-    val json = gson.toJson(newBookList)
-    val sharedPreferences = context.getSharedPreferences("MyDatas", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    editor.putString("bookList", json)
-    editor.apply()
-}
+
+//fun deleteBook(context: Context, bookList: MutableList<Book>, idBook: Int) {
+//    val newBookList = mutableListOf<Book>()
+//    var index = 0
+//    for (x in bookList) {
+//        if (index != idBook) {
+//            newBookList.add(x)
+//        }
+//        index += 1
+//    }
+//    //	bookList.removeAt(idBook)
+//    val gson = Gson()
+//    val json = gson.toJson(newBookList)
+//    val sharedPreferences = context.getSharedPreferences("MyDatas", Context.MODE_PRIVATE)
+//    val editor = sharedPreferences.edit()
+//    editor.putString("bookList", json)
+//    editor.apply()
+//}
 
 
 

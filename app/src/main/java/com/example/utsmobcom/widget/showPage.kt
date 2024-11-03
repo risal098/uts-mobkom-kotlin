@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.utsmobcom.Data
 import com.example.utsmobcom.type.Book
+
 @Composable
 fun ShowBook(navController: NavController, book: Int) {
 
@@ -36,26 +37,25 @@ fun ShowBook(navController: NavController, book: Int) {
         {
             ShowBoxFull(navController = navController, book = Data[book])
         }
-        ExtendedFloatingActionButton (
+        ExtendedFloatingActionButton(
 
             interactionSource = remember {
                 MutableInteractionSource()
             },
             onClick = {
-                      navController.popBackStack()
-                      },
+                navController.popBackStack()
+            },
             containerColor = Color(175, 123, 189),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(16.dp),
         ) {
-            Row (
-            ) {
+            Row {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                 Text(
                     text = "Go Back",
                     modifier = Modifier.padding(start = 12.dp)
-                    )
+                )
             }
         }
     }
@@ -76,16 +76,16 @@ fun ShowBoxFull(navController: NavController, book: Book) {
             )
 
     ) {
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         )
         {
             Column {
-                Column (
+                Column(
                     modifier = Modifier.padding(bottom = 12.dp)
-                ){
+                ) {
                     Text(text = "Judul: ")
                     Text(
                         text = book.judul,
@@ -98,9 +98,9 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                             .fillMaxWidth()
                     )
                 }
-                Column (
+                Column(
                     modifier = Modifier.padding(bottom = 12.dp)
-                ){
+                ) {
                     Text(text = "Judul: ")
                     Text(
                         text = book.judul,
@@ -113,9 +113,9 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                             .fillMaxWidth()
                     )
                 }
-                Column (
+                Column(
                     modifier = Modifier.padding(bottom = 12.dp)
-                ){
+                ) {
                     Text(text = "Penerbit: ")
                     Text(
                         text = book.penerbit,
@@ -128,9 +128,9 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                             .fillMaxWidth()
                     )
                 }
-                Column (
+                Column(
                     modifier = Modifier.padding(bottom = 12.dp)
-                ){
+                ) {
                     Text(text = "Pengarang: ")
                     Text(
                         text = book.pengarang,
@@ -143,9 +143,9 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                             .fillMaxWidth()
                     )
                 }
-                Column (
+                Column(
                     modifier = Modifier.padding(bottom = 12.dp)
-                ){
+                ) {
                     Text(text = "Tahun: ")
                     Text(
                         text = book.tahun,
@@ -158,9 +158,9 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                             .fillMaxWidth()
                     )
                 }
-                Column (
+                Column(
                     modifier = Modifier.padding(bottom = 12.dp)
-                ){
+                ) {
                     Text(text = "Genre: ")
                     Text(
                         text = book.genre,
@@ -173,9 +173,9 @@ fun ShowBoxFull(navController: NavController, book: Book) {
                             .fillMaxWidth()
                     )
                 }
-                Column (
+                Column(
                     modifier = Modifier.padding(bottom = 12.dp)
-                ){
+                ) {
                     Text(text = "Rangkuman: ")
                     Text(
                         text = book.rangkuman,
